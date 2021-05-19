@@ -1,6 +1,16 @@
 'use strict';
 // https://www.youtube.com/watch?v=nP5S2RhbaB8&list=PLVngfM2hsbi-L6G8qlWd8RyRbuTamHt3k&index=3
 //search more
+//the ascii of small97 - capitals65..
+//0 leaves the arr as it self
+// false/1- if you don't compare will not change arr
+//true/1 if you don't compare, reverse the whole arr 
+// ****************************************************
+// sort is working like this ->
+// for example as asc sort
+// 3-4 = -1 (so cuz the num is minus will take 3)
+// if 4-3 (cuz it will return + will take 4)
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
@@ -40,8 +50,6 @@ sorts them alphabetically.
 
 For example: 'Cat' would come before 'apple'
 ------------------------------------------------------------------------------------------------ */
-//the ascii of small97 - capitals65..
-//a-b
 const sortNames = (arr) => {
   // Solution code here...
   arr.sort();
@@ -56,7 +64,7 @@ that takes an array of numbers and sorts them from smallest to largest.
 
 HINT: Beware... JS default is "Lexical" ordering.
 ------------------------------------------------------------------------------------------------ */
-// (1)
+// (1) - lecture way
 // const sortNumbers = (arr) => {
 //   // Solution code here...
 //   arr.sort((a, b) => {
@@ -80,17 +88,6 @@ const sortNumbers = (arr) => {
   arr.sort(val);
   return arr;
 };
-
-
-//0 leaves the arr as it self
-// false/1- if you don't compare will not change arr
-//true/1 if you don't compare, reverse the whole arr 
-// ****************************************************
-// sort is working like this ->
-// for example as asc sort
-// 3-4 = -1 (so cuz the num is minus will take 3)
-// if 4-3 (cuz it will return + will take 4)
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
 
