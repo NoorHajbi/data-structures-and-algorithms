@@ -1,6 +1,9 @@
 // https://codefellows.github.io/code-301-guide/curriculum/class-07/challenges/
 // https://www.youtube.com/watch?v=vGtLUc5NUO4&list=PLVngfM2hsbi-L6G8qlWd8RyRbuTamHt3k&index=6
 // https://codefellows.github.io/code-301-guide/curriculum/class-07/challenges/DEMO.html
+//substring & slice are same but switch values in slice is impossible 
+// substring(0,10) <=> substring(10,0) but slice(10,0) gives nth (move from index 0-9)
+//substr (4,5) , means move from index 4 (move 5 charecters)
 'use strict';
 
 /* ------------------------------------------------------------------------------------------------
@@ -181,6 +184,13 @@ const gruffaloCrumble = {
 const listFoods = (recipe) => {
   let result = [];
   // Solution code here...
+  recipe.ingredients.forEach(value => {
+    // substring will return same also in this case substr will return same
+    // start from index after space to space
+    let space1 = value.slice(value.indexOf(' ') + 1); 
+    let space2 = space1.slice(space1.indexOf(' ') + 1);
+    result.push(space2);
+  })
   return result;
 }
 
