@@ -184,12 +184,12 @@ describe('Testing challenge 6', () => {
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
   let bool = false;
-   arr.map(val => {
+  arr.map(val => {
     if (Object.values(val).includes(character)) {
       if (val.children)
-      bool= true
+        bool = true
       else
-      bool= false
+        bool = false
     }
   })
   return bool
