@@ -1,5 +1,17 @@
 'use strict';
-
+// keys(obj) – returns an array of keys.
+// values(obj) – returns an array of values.
+// entries(obj) – returns an array of [key, value] pairs.
+// let user = {
+//   name: "John",
+//   age: 30
+// };
+// Object.keys(user) = ["name", "age"]
+// Object.values(user) = ["John", 30]
+// Object.entries(user) = [ ["name","John"], ["age",30] ]
+// https://www.youtube.com/watch?v=NGvpqw8PQZU&list=PLVngfM2hsbi-L6G8qlWd8RyRbuTamHt3k&index=6
+// https://codefellows.github.io/code-301-guide/curriculum/class-09/challenges/
+// https://codefellows.github.io/code-301-guide/curriculum/class-09/challenges/DEMO.html
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
@@ -21,29 +33,37 @@ const maxInArray = (arr) => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
-Write a function named getCourseKeys that takes in the courseInfo object and returns an array containing the keys for the courseInfo object.
+Write a function named getCourseKeys that takes in the courseInfo 
+object and returns an array containing the keys for the courseInfo object.
 
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
-const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
+const courseInfo = {
+  name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks' },
   topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
   finalExam: true
 };
 
 const getCourseKeys = (obj) => {
   // Solution code here...
+  return Object.keys(obj)
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
 
-Write a function named checkValues that takes in an object and a value and returns true if the value is in the object.
+Write a function named checkValues that takes in
+ an object and a value and returns true if the value is in the object.
 
 
 ------------------------------------------------------------------------------------------------ */
 
 const checkValues = (obj, value) => {
   // Solution code here...
+  if (Object.values(obj).includes(value))
+    return true
+  else
+    return false
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,6 +87,8 @@ HR has asked you to change the data to make it easier to print so that it looks 
 
 const updateNumbers = (obj) => {
   // Solution code here...
+  for (let property in obj)
+    return `${property}: ${obj[property]}`;
 };
 
 
@@ -74,7 +96,8 @@ const updateNumbers = (obj) => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
-Write a function named getHouses that returns a new array containing the names of all of the houses in the data set.
+Write a function named getHouses that returns a new array containing 
+the names of all of the houses in the data set.
 ------------------------------------------------------------------------------------------------ */
 
 const characters = [
@@ -123,26 +146,54 @@ const characters = [
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
+  arr.map(val => {
+    houses.push(val.house)
+  })
   return houses;
 };
 
 /*------------------------------------------------------------------------------------------------
 CHALLENGE 6
 
-Write a function named hasChildrenValues that uses Object.values to determine if any given character in the data set has children.
+Write a function named hasChildrenValues that uses 
+Object.values to determine if any given character in the data set has children.
 
 This function should take in an array of data and a character name and return a Boolean.
 
 For example:
 hasChildrenValues(characters, 'Cersei') will return true
 hasChildrenValues(characters, 'Sansa') will return false
+
+***************************************************
+describe('Testing challenge 6', () => {
+  test('It should return true for characters that have children', () => {
+    expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
+  });
+
+  test('It should return false to characters who do not have children', () => {
+    expect(hasChildrenValues(characters, 'Sansa')).toBeFalsy();
+  });
+});
+
+**********
+  // Object.values
+  //take arr
+  //character name
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-
+  let bool = false;
+   arr.map(val => {
+    if (Object.values(val).includes(character)) {
+      if (val.children)
+      bool= true
+      else
+      bool= false
+    }
+  })
+  return bool
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
