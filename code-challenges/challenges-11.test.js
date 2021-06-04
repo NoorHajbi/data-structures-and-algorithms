@@ -21,6 +21,11 @@ Becomes:
 
 function transformToLis(obj) {
   // Solution code here...
+  //why it works with map but not forEach?
+  let properties = Object.keys(obj);
+  return properties.map(property =>
+    `<li>${property}: ${obj[property]}</li>`
+  )
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -54,7 +59,8 @@ Write a function that,
 given an array of integer arrays as input,
  calculates the total sum of all the elements in the array.
 
-You may want to use filter, map, or reduce for this problem, but are not required to. You may need to use the same method more than once.
+You may want to use filter, map, or reduce for this problem, 
+but are not required to. You may need to use the same method more than once.
 
 For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 ------------------------------------------------------------------------------------------------ */
@@ -87,14 +93,12 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
-  return input.map(innerArr => {
-    innerArr.filter(val => {
-      (typeof val === 'number' && val % 5 === 0).map(val2 => {
-        Math.pow(2, val2)
-      })
-    })
-  })
-
+  return input.map(innerArr =>
+    innerArr.filter(val =>
+      (typeof val === 'number' && val % 5 === 0))
+      .map(val2 =>
+        Math.pow(2, val2))
+  )
 };
 
 
@@ -107,6 +111,17 @@ returns the names of the characters whose gender is either male or female.
 The names should be combined into a single string with each character name separated by "and".
 
 For example, "C-3PO and Luke Skywalker".
+
+
+-------------
+
+describe('Testing challenge 5', () => {
+  test('It should return only characters that are male or female', () => {
+    expect(findMaleAndFemale(starWarsData)).toStrictEqual('Luke Skywalker and Darth Vader and Leia Organa');
+    expect(findMaleAndFemale([{ name: 'person', gender: 'female' }, { gender: 'lol' }, { name: 'persontwo', gender: 'male' }])).toStrictEqual('person and persontwo');
+  });
+});
+
 ------------------------------------------------------------------------------------------------ */
 
 let starWarsData = [{
@@ -162,27 +177,39 @@ let starWarsData = [{
 
 let findMaleAndFemale = (data) => {
   // Solution code here...
+  return data.filter(starData =>
+    (starData.gender === 'male' || starData.gender === 'female'))
+    .map(namesData =>
+      namesData.name)
+    .join(' and ');
 };
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 6 
 
-Write a function named findShortest that, given the Star Wars data from Challenge 6, uses any combination of filter, map and reduce to return the name of the character who is the shortest in height.
+Write a function named findShortest that, given the Star Wars data from Challenge 6,
+ uses any combination of filter, map and reduce to return the name of the character who is the shortest in height.
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
   // Solution code here...
+  let shortest = data[0]
+  data.filter(val => {
+    if (parseInt(val.height) < parseInt(shortest.height))
+      shortest = val
+  })
+  return shortest.name
 };
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
-
+ 
 All the code below will verify that your functions are working to solve the challenges.
-
+ 
 DO NOT CHANGE any of the below code.
-
+ 
 Run your tests from the console: jest challenges-10.test.js
-
+ 
 ------------------------------------------------------------------------------------------------ */
 
 describe('Testing challenge 1', () => {
