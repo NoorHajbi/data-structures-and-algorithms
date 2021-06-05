@@ -1,5 +1,7 @@
 'use strict';
-
+// https://codefellows.github.io/code-301-guide/curriculum/class-13/challenges/
+// https://www.youtube.com/watch?v=vGtLUc5NUO4&list=PLVngfM2hsbi-L6G8qlWd8RyRbuTamHt3k&index=5&t=527s
+// https://codefellows.github.io/code-301-guide/curriculum/class-13/challenges/DEMO.html
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
